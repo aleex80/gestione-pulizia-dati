@@ -18,7 +18,7 @@ L'obiettivo è centralizzare i dati delle vendite giornaliere provenienti da div
 
 1. **Pulizia dei dati:** I dati grezzi delle vendite di due giornate e l'anagrafica prodotti sono stati caricati tramite file CSV. In questa fase è stata eseguita la pulizia dei dati: inizialmente importati come testo (`NVARCHAR`), sono stati convertiti nei formati corretti (`INT`, `DATE` e `DECIMAL`) per preservare l'integrità matematica del database.
 2. **Creazione tabella definitiva:** È stata creata la tabella definitiva `tb_storico_vendite`, strutturata per accogliere i flussi di dati giornalieri attraverso l'uso di query di inserimento e funzioni di conversione (`CAST`).
-3. **Modello Relazionale:** È stato implementato un sistema di relazione tramite `id_prodotto` per simulare un vero ambiente relazionale, consentendo di tracciare vendite ripetute dello stesso oggetto in giorni diversi.
+3. **Modello Relazionale:** È stato implementato un sistema di relazione tramite `id_prodotto` per simulare un ambiente relazionale, per tracciare vendite ripetute dello stesso oggetto in giorni diversi.
 
 ```sql
 -- Creazione della tabella storica con i tipi di dato corretti
@@ -43,9 +43,33 @@ SELECT
     CAST(data_vendita AS DATE),
     stato_pagamento
 FROM dbo.vendite_20260601;
+```
+---
+
+## Fase 2: Controllo Dati
+Prima di rimuovere le tabelle iniziali, viene eseguita una query di verifica per assicurarsi che il numero di righe iniziali e quelle della nuova tabella storica combacino.
+
+```sql
+SELECT 
+    'Tabelle di DUMP (Origine CSV)' AS Fonte_Dati,
+    (SELECT COUNT(*) FROM dbo.vendite_20260601) + (SELECT COUNT(*) FROM dbo.vendite_20260602) AS Totale_Righe,
+    (SELECT SUM(quantita) FROM dbo.vendite_20260601) + (SELECT SUM(quantita) FROM dbo.vendite_20260602) AS Totale_Quantita
+
+UNION ALL
+
+SELECT 
+    'Tabella STORICA (Destinazione)',
+    COUNT(*),
+    SUM(quantita)
+FROM dbo.tb_storico_vendite;
+```
+
+---
 
 ## Dashboard di Analisi (Excel)
+Dashboard creata tramite tabella Pivot su data_vendita e importo
 ![Dashboard Vendite](dashboard.png)
+
 
 
 
