@@ -1,4 +1,4 @@
-#  Sistema di Analisi Vendite (SQL a Excel)
+#  Inserimento, Pulizia, ed Estrazione Dati + Dashboard (SQL a Excel)
 
 L'obiettivo è centralizzare i dati delle vendite giornaliere provenienti da diversi file CSV all'interno di un database relazionale (SQL Server), pulirli, correggerne i tipi di dato e collegarli a Excel per la creazione di report e dashboard aziendali.
 
@@ -43,6 +43,9 @@ SELECT
     CAST(data_vendita AS DATE),
     stato_pagamento
 FROM dbo.vendite_20260601;
+
+## Dashboard di Analisi (Excel)
+![Dashboard Vendite](dashboard.png)
 
 
 
