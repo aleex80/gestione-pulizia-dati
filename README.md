@@ -1,1 +1,49 @@
-# gestione-pulizia-dati
+#  Sistema di Analisi Vendite (SQL a Excel)
+
+L'obiettivo è centralizzare i dati delle vendite giornaliere provenienti da diversi file CSV all'interno di un database relazionale (SQL Server), pulirli, correggerne i tipi di dato e collegarli a Excel per la creazione di report e dashboard aziendali.
+
+---
+
+##  Tecnologie Utilizzate
+
+* **Database:** SQL Server
+* **Data Analysis:** Microsoft Excel 
+* **Formato Origine:** File CSV
+
+---
+
+##  Fasi di Lavoro
+
+### Fase 1: Importazione e Data Cleaning (SQL Server)
+
+1. **Pulizia dei dati:** I dati grezzi delle vendite di due giornate e l'anagrafica prodotti sono stati caricati tramite file CSV. In questa fase è stata eseguita la pulizia dei dati: inizialmente importati come testo (`NVARCHAR`), sono stati convertiti nei formati corretti (`INT`, `DATE` e `DECIMAL`) per preservare l'integrità matematica del database.
+2. **Creazione tabella definitiva:** È stata creata la tabella definitiva `tb_storico_vendite`, strutturata per accogliere i flussi di dati giornalieri attraverso l'uso di query di inserimento e funzioni di conversione (`CAST`).
+3. **Modello Relazionale:** È stato implementato un sistema di relazione tramite `id_prodotto` per simulare un vero ambiente relazionale, consentendo di tracciare vendite ripetute dello stesso oggetto in giorni diversi.
+
+```sql
+-- Creazione della tabella storica con i tipi di dato corretti
+CREATE TABLE tb_storico_vendite (
+    id_scontrino INT,
+    cliente VARCHAR(100),
+    id_prodotto INT,
+    quantita INT,
+    importo DECIMAL(10,2), 
+    data_vendita DATE,
+    stato_pagamento VARCHAR(50)
+);
+
+-- Inserimento e pulizia dati dal file del Giorno 1
+INSERT INTO dbo.tb_storico_vendite
+SELECT 
+    CAST(id_scontrino AS INT),
+    cliente,
+    CAST(id_prodotto AS INT),
+    CAST(quantita AS INT),
+    CAST(importo AS DECIMAL(10,2)),
+    CAST(data_vendita AS DATE),
+    stato_pagamento
+FROM dbo.vendite_20260601;
+
+
+
+
