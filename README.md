@@ -16,8 +16,8 @@ L'obiettivo è centralizzare i dati delle vendite giornaliere provenienti da div
 
 ### Preliminare
 Creazione file CSV.
-1. **[`vendite_20260601.csv`](vendite_20260601.csv) e [`vendite_20260602.csv`](vendite_20260602.csv):** Contengono i dati grezzi delle transazioni effettuate in due giornate lavorative. Campi inclusi: `id_scontrino`, `cliente`, `id_prodotto`, `quantita`, `importo`, `data_vendita`, `stato_pagamento`.
-2. **[`prodotti.csv`](prodotti.csv):** Contiene l'elenco dei prodotti con il relativo `id_prodotto` e la descrizione dell'oggetto, utilizzato per strutturare le relazioni del database.
+1. **[`vendite_20260601.csv`](File_CSV/vendite_20260601.csv) e [`vendite_20260602.csv`](File_CSV/vendite_20260602.csv):** Contengono i dati grezzi delle transazioni effettuate in due giornate lavorative. Campi inclusi: `id_scontrino`, `cliente`, `id_prodotto`, `quantita`, `importo`, `data_vendita`, `stato_pagamento`.
+2. **[`prodotti.csv`](File_CSV/prodotti.csv):** Contiene l'elenco dei prodotti con il relativo `id_prodotto` e la descrizione dell'oggetto, utilizzato per strutturare le relazioni del database.
 
 *_Tutti i valori nei CSV sono formattati come testo. Viene successivamente mostrato come convertirli e strutturarli tramite SQL._*
 
