@@ -1,0 +1,26 @@
+id_scontrino,cliente,id_prodotto,quantita,importo,data_vendita,stato_pagamento
+1,Mario Rossi,101,1,89.90,2026-06-01,Pagato
+2,Elena Bianchi,102,1,45.00,2026-06-01,Pagato
+3,Luigi Verdi,103,1,120.50,2026-06-01,In Attesa
+4,Annamaria Neri,104,2,39.98,2026-06-01,Pagato
+5,Giuseppe Russo,105,1,15.50,2026-06-01,Pagato
+6,Laura Ferrari,104,1,19.99,2026-06-01,Pagato
+7,Andrea Esposito,106,3,36.00,2026-06-01,Pagato
+8,Stefano Romano,109,1,18.50,2026-06-01,Pagato
+9,Francesca Colombo,107,1,65.00,2026-06-01,In Attesa
+10,Giovanni Ricci,108,1,49.99,2026-06-01,Pagato
+11,Anna Marino,101,1,89.90,2026-06-01,Pagato
+12,Antonio Greco,106,1,12.00,2026-06-01,Pagato
+13,Paolo Bruno,104,1,19.99,2026-06-01,Pagato
+14,Chiara Gallo,105,2,31.00,2026-06-01,Pagato
+15,Alessandro Conti,110,1,29.90,2026-06-01,Pagato
+16,Silvia De Luca,102,1,45.00,2026-06-01,In Attesa
+17,Roberto Costa,106,2,24.00,2026-06-01,Pagato
+18,Giulia Giordano,107,1,65.00,2026-06-01,Pagato
+19,Marco Rizzo,109,2,37.00,2026-06-01,Pagato
+20,Federica Lombardi,104,1,19.99,2026-06-01,Pagato
+21,Francesco Moretti,106,1,12.00,2026-06-01,Pagato
+22,Emanuela Mancini,108,1,49.99,2026-06-01,Pagato
+23,Davide Barbieri,110,2,59.80,2026-06-01,Pagato
+24,Sara Fontana,105,1,15.50,2026-06-01,In Attesa
+25,Michele Santoro,103,1,120.50,2026-06-01,Pagato
