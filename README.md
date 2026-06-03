@@ -73,6 +73,13 @@ FROM dbo.tb_storico_vendite;
 
 ---
 
+## Fase 3: Inserimento in Excel
+Una volta importati i dati puliti all'interno di Microsoft Excel tramite connessione al database, la colonna degli importi è stata formattata:
+1. Correzione valori senza virgola: è stato copiato il valore `100` da una cella e, tramite il comando **Incolla speciale -> Dividi**, applicato direttamente sulla colonna dei prezzi per trasformarli nel valore decimale corretto. (es. da 8990 -> 89,9).
+2. Cliccando sulla cella degli importi, è stata trasformata la colonna in formato valuta, così i valori vengono visualizzati nel formato corretto (es. da 89,9 -> 89,90 €).
+
+---
+
 ## Dashboard di Analisi (Excel)
 Dashboard creata tramite tabella Pivot su data_vendita e importo
 ![Dashboard Vendite](dashboard.png)
