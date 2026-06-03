@@ -1,6 +1,6 @@
 #  Inserimento, Pulizia, ed Estrazione Dati + Dashboard (SQL a Excel)
 
-L'obiettivo è centralizzare i dati delle vendite giornaliere provenienti da diversi file CSV all'interno di un database relazionale (SQL Server), pulirli, correggerne i tipi di dato e collegarli a Excel per la creazione di report e dashboard aziendali.
+L'obiettivo è centralizzare i dati delle vendite giornaliere provenienti da diversi file CSV creati all'interno di un database relazionale (SQL Server), pulirli, correggerne i tipi di dato e collegarli a Excel per la creazione di report e dashboard aziendali.
 
 ---
 
@@ -14,9 +14,16 @@ L'obiettivo è centralizzare i dati delle vendite giornaliere provenienti da div
 
 ##  Fasi di Lavoro
 
+### Preliminare
+Creazione file CSV.
+1. **[`vendite_20260601.csv`](vendite_20260601.csv) e [`vendite_20260602.csv`](vendite_20260602.csv):** Contengono i dati grezzi delle transazioni effettuate in due giornate lavorative. Campi inclusi: `id_scontrino`, `cliente`, `id_prodotto`, `quantita`, `importo`, `data_vendita`, `stato_pagamento`.
+2. **[`prodotti.csv`](prodotti.csv):** Contiene l'elenco dei prodotti con il relativo `id_prodotto` e la descrizione dell'oggetto, utilizzato per strutturare le relazioni del database.
+
+*_Tutti i valori nei CSV sono formattati come testo. Viene successivamente mostrato come convertirli e strutturarli tramite SQL._*
+
 ### Fase 1: Importazione e Data Cleaning (SQL Server)
 
-1. **Pulizia dei dati:** I dati grezzi delle vendite di due giornate e l'anagrafica prodotti sono stati caricati tramite file CSV. In questa fase è stata eseguita la pulizia dei dati: inizialmente importati come testo (`NVARCHAR`), sono stati convertiti nei formati corretti (`INT`, `DATE` e `DECIMAL`) per preservare l'integrità matematica del database.
+1. **Pulizia dei dati:** I dati grezzi delle vendite di due giornate ed il catalogo prodotti sono stati caricati tramite file CSV. In questa fase è stata eseguita la pulizia dei dati: inizialmente importati come testo (`NVARCHAR`), sono stati convertiti nei formati corretti (`INT`, `DATE` e `DECIMAL`) per preservare la logica matematica del database.
 2. **Creazione tabella definitiva:** È stata creata la tabella definitiva `tb_storico_vendite`, strutturata per accogliere i flussi di dati giornalieri attraverso l'uso di query di inserimento e funzioni di conversione (`CAST`).
 3. **Modello Relazionale:** È stato implementato un sistema di relazione tramite `id_prodotto` per simulare un ambiente relazionale, per tracciare vendite ripetute dello stesso oggetto in giorni diversi.
 
